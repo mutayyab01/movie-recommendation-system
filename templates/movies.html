@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shor icon" href="{{url_for('static',filename='assest/hero/alraza.png')}}">
+    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="{{url_for('static',filename='icofont/icofont.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/movies.css')}}">
+    <title>AR-Movies</title>
+</head>
+
+<body>
+
+    <body onload="preloader()">
+        <div class="preloader">
+            <img src="{{url_for('static',filename='assest/loader/preloader.gif')}}" alt="preloader">
+        </div>
+        <header>
+            <nav>
+                <div class="brand">
+                    <a href="" class="brand-logo">AR-Movies</a>
+                    <div class="nav-toggle">
+                        <div class="toggle">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+                </div>
+                <ul>
+                    <li><a href="/">home</a></li>
+                    <li><a href="movies">movies</a></li>
+                    <li><a href="/">tv shows</a></li>
+                    <li><a href="/">blogs</a></li>
+                </ul>
+                <figure class="user">
+                    <img src="{{url_for('static',filename='assest/hero/Mutayyab.png')}}" alt="user">
+                </figure>
+            </nav>
+        </header>
+
+        <div class="movie-container">
+            <div class="heading">
+                <h4>Trending Movies</h4>
+            </div>
+            <!-- search bar and search filter  -->
+            <div class="filter-container">
+                <div class="btn">
+                    <button class="btn-filter" onclick="filterFunction('all')">all</button>
+                    <button class="btn-filter" onclick="filterFunction('action')">Action</button>
+                    <button class="btn-filter" onclick="filterFunction('horror')">Horror</button>
+                    <button class="btn-filter" onclick="filterFunction('adventure')">Adventure</button>
+                    <button class="btn-filter" onclick="filterFunction('tvshows')">Tv Shows</button>
+                    <button class="btn-filter" onclick="filterFunction('drama')">drama</button>
+                </div>
+                <div class="movie-search">
+                    <input type="text" placeholder="search Movies here" class="movieSearcher">
+                    <i class="icofont-search-1 searchbtn"></i>
+                </div>
+            </div>
+
+            <section class="movie-wrapper">
+                <!-- movies and tve shows -->
+
+
+{% for i in range(movieName|length)%}
+<div class="movie-card adventure tvshows">
+    <div class="img"><img src="{{ PosterPath[i]}}">
+        <div class="dw-btn"><i class="icofont-ui-play"></i></div>
+    </div>
+    <div class="movie-card-info">
+        <div class="name-ratting">
+            <p class="movie-name">{{movieName[i]}}</p>
+            <div class="ratting"><i class="icofont-star"></i>
+                <p>{{VoteAverage[i]}}</p>
+            </div>
+        </div>
+        <div class="customer-review">
+            <div class="like"><i class="icofont-like"></i>
+                <p>{{VoteCount[i]}}</p>
+            </div>
+            <div class="see"><i class="icofont-eye-alt"></i>
+                <p><a href="{{Homepage[i]}}" style="color: white;">Homepage</a></p>
+            </div>
+            <div class="dw"><i class="icofont-download"></i>
+                <p>2680</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+
+
+            
+
+
+
+
+
+
+
+
+
+
+
+
+            </section>
+        </div>
+        <!-- scroll -->
+
+        <div class="scroll">
+            <i class="icofont-rounded-up"></i>
+        </div>
+        <!-- footer -->
+        <div class="footer-container">
+            <footer>
+                <a href="index.html">AR-Movies</a>
+                <p>copyright &copy; 2022 <span> AR-Movies </span> all rights reserved </p>
+                <div class="social">
+                    <i class="icofont-facebook"></i>
+                    <i class="icofont-twitter"></i>
+                    <i class="icofont-instagram"></i>
+                </div>
+            </footer>
+        </div>
+        <script src="{{url_for('static',filename='js/movies.js')}}"></script>
+    </body>
+
+</html>
